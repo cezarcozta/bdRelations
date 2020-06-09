@@ -72,6 +72,8 @@ class CreateOrderService {
       products: productsList,
     };
 
+    await this.productsRepository.updateQuantity(products);
+
     const order = await this.ordersRepository.create(dataOrder);
 
     return order;

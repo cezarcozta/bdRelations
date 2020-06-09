@@ -4,7 +4,7 @@ import { container } from 'tsyringe';
 
 import CreateOrderService from '@modules/orders/services/CreateOrderService';
 import FindOrderService from '@modules/orders/services/FindOrderService';
-import AppError from '@shared/errors/AppError';
+// import AppError from '@shared/errors/AppError';
 
 export default class OrdersController {
   public async show(request: Request, response: Response): Promise<Response> {
@@ -36,10 +36,10 @@ export default class OrdersController {
         products,
       });
 
-      return response.json({ order });
+      return response.json(order);
     } catch (err) {
-      throw new AppError('Erro na Order');
-      // return response.status(400).json({ error: err.message });
+      // throw new AppError('Erro na Order', 400);
+      return response.status(400).json({ error: err.message });
     }
   }
 }

@@ -23,7 +23,7 @@ class CreateCustomerService {
     );
 
     if (checkCustomerExists) {
-      throw new AppError('Email address already in use.');
+      throw new AppError('Email address already in use.', 400);
     }
 
     const customer = await this.customersRepository.create({
